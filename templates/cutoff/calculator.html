@@ -1,0 +1,83 @@
+{% extends "base.html" %} {% block title %} Cutoff Calculator {% endblock %}
+{%block content %}
+
+<div class="container py-5">
+  <div class="text-center mb-5">
+    <h1 class="fw-bold text-primary">TNEA Cutoff Calculator</h1>
+
+    <p class="lead">Calculate your engineering cutoff instantly.</p>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="card shadow p-4">
+        <h3 class="mb-4">Enter Your Marks</h3>
+
+        <form method="POST">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label class="form-label"> Mathematics </label>
+
+            <input
+              type="number"
+              name="maths"
+              class="form-control"
+              placeholder="Enter Mathematics Mark"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label"> Physics </label>
+
+            <input
+              type="number"
+              name="physics"
+              class="form-control"
+              placeholder="Enter Physics Mark"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label"> Chemistry </label>
+
+            <input
+              type="number"
+              name="chemistry"
+              class="form-control"
+              placeholder="Enter Chemistry Mark"
+            />
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label"> Category </label>
+
+            <select class="form-select" name="category" required>
+              <option selected disabled>Select Category</option>
+
+              <option>OC</option>
+              <option>BC</option>
+              <option>BCM</option>
+              <option>MBC</option>
+              <option>SC</option>
+              <option>SCA</option>
+              <option>ST</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">
+            Calculate Cutoff
+          </button>
+
+          {% if cutoff %}
+          <div class="alert alert-success mt-4 text-center">
+            <h5>Your TNEA Cutoff</h5>
+            <h2>{{ cutoff }}</h2>
+          </div>
+          {% endif %}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

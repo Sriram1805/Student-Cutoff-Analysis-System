@@ -1,0 +1,214 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}CutoffIQ{% endblock %}</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body class="bg-light">
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm sticky-top py-3">
+    <div class="container">
+
+        <a class="navbar-brand fw-bold fs-3" href="{% url 'home' %}">
+            🎓 CutoffIQ
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="{% url 'home' %}">
+                        <i class="bi bi-house-door"></i> Home
+                    </a>
+                </li>
+
+                {% if user.is_authenticated %}
+
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="{% url 'dashboard' %}">
+                        <i class="bi bi-speedometer2"></i> Dashboard
+                    </a>
+                </li>
+
+                {% endif %}
+
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="{% url 'calculator' %}">
+                        <i class="bi bi-calculator"></i> Calculator
+                    </a>
+                </li>
+
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="{% url 'colleges' %}">
+                        <i class="bi bi-building"></i> Colleges
+                    </a>
+                </li>
+
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="{% url 'prediction' %}">
+                        <i class="bi bi-graph-up-arrow"></i> Prediction
+                    </a>
+                </li>
+
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="{% url 'history' %}">
+                        <i class="bi bi-clock-history"></i> History
+                    </a>
+                </li>
+
+                {% if user.is_authenticated %}
+
+                <li class="nav-item mx-2">
+                    <a class="btn btn-light text-primary fw-semibold px-3"
+                       href="{% url 'logout' %}">
+                        Logout
+                    </a>
+                </li>
+
+                {% else %}
+
+                <li class="nav-item mx-2">
+                    <a class="btn btn-light text-primary fw-semibold px-3"
+                       href="{% url 'login' %}">
+                        Login
+                    </a>
+                </li>
+
+                {% endif %}
+
+            </ul>
+
+        </div>
+
+    </div>
+</nav>
+
+<!-- ================= PAGE CONTENT ================= -->
+
+{% block content %}
+{% endblock %}
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="bg-dark text-white mt-5 pt-5 pb-3">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-5 mb-4">
+
+                <h3 class="fw-bold text-primary">
+                    CutoffIQ
+                </h3>
+
+                <p class="text-light">
+
+                    Student Cutoff Analysis System helps students calculate
+                    TNEA cutoff marks, search engineering colleges,
+                    predict admission chances and manage calculation history.
+
+                </p>
+
+            </div>
+
+            <div class="col-lg-3 mb-4">
+
+                <h5 class="mb-3">
+                    Quick Links
+                </h5>
+
+                <ul class="list-unstyled">
+
+                    <li class="mb-2">
+                        <a href="{% url 'home' %}" class="text-white text-decoration-none">
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a href="{% url 'calculator' %}" class="text-white text-decoration-none">
+                            Calculator
+                        </a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a href="{% url 'colleges' %}" class="text-white text-decoration-none">
+                            Colleges
+                        </a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a href="{% url 'prediction' %}" class="text-white text-decoration-none">
+                            Prediction
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="col-lg-4 mb-4">
+
+                <h5 class="mb-3">
+                    Contact
+                </h5>
+
+                <p class="mb-2">
+                    📧 support@cutoffiq.com
+                </p>
+
+                <p class="mb-2">
+                    📍 Chennai, Tamil Nadu
+                </p>
+
+                <p class="mb-2">
+                    🎓 Student Project
+                </p>
+
+            </div>
+
+        </div>
+
+        <hr class="border-secondary">
+
+        <p class="text-center text-secondary mb-0">
+
+            © 2026 <strong>CutoffIQ</strong> | Student Cutoff Analysis System |
+            Developed by <strong>Sriram R</strong>
+
+        </p>
+
+    </div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% block title %} Colleges {% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+        <h1 class="fw-bold text-primary">Engineering Colleges</h1>
+        <p class="lead">
+            Search colleges based on district, branch and category.
+        </p>
+    </div>
+
+    <div class="card shadow p-4 mb-5">
+
+        <form method="GET">
+
+            <div class="row g-3">
+
+                <!-- District -->
+                <div class="col-md-4">
+                    <label class="form-label">District</label>
+
+                    <select class="form-select" name="district">
+                        <option value="">Select District</option>
+
+                        {% for district in districts %}
+                            <option value="{{ district }}">
+                                {{ district }}
+                            </option>
+                        {% endfor %}
+
+                    </select>
+                </div>
+
+                <!-- Branch -->
+                <div class="col-md-4">
+                    <label class="form-label">Branch</label>
+
+                    <select class="form-select" name="branch">
+                        <option value="">Select Branch</option>
+
+                        {% for branch in branches %}
+                            <option value="{{ branch.id }}">
+                                {{ branch.branch_name }}
+                            </option>
+                        {% endfor %}
+
+                    </select>
+                </div>
+
+                <!-- Category -->
+                <div class="col-md-4">
+                    <label class="form-label">Category</label>
+
+                    <select class="form-select" name="category">
+                        <option value="">Select Category</option>
+                        <option value="OC">OC</option>
+                        <option value="BC">BC</option>
+                        <option value="BCM">BCM</option>
+                        <option value="MBC">MBC</option>
+                        <option value="SC">SC</option>
+                        <option value="SCA">SCA</option>
+                        <option value="ST">ST</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary px-5">
+                    Search Colleges
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+    <!-- College Table -->
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">College List</h5>
+        </div>
+
+        <div class="table-responsive">
+
+            <table class="table table-hover mb-0">
+
+                <thead>
+                    <tr>
+                        <th>College</th>
+                        <th>District</th>
+                        <th>Branch</th>
+                        <th>Category</th>
+                        <th>Closing Cutoff</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for cutoff in cutoffs %}
+
+                    <tr>
+                        <td>{{ cutoff.college.college_name }}</td>
+                        <td>{{ cutoff.college.district }}</td>
+                        <td>{{ cutoff.branch.branch_name }}</td>
+                        <td>{{ cutoff.category }}</td>
+                        <td>{{ cutoff.closing_cutoff }}</td>
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+                        <td colspan="5" class="text-center">
+                            No colleges found.
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

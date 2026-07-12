@@ -1,0 +1,184 @@
+{% extends "base.html" %} {% block title %} Home {% endblock %} {% block content %}
+
+<section class="hero py-4">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <span class="badge bg-primary mb-3 fs-6">
+          TNEA Admission Prediction
+        </span>
+
+        <h1 class="display-3 fw-bold">
+          Cutoff<span class="text-primary">IQ</span>
+        </h1>
+
+        <h3 class="mb-4">Student Cutoff Analysis System</h3>
+
+        <p class="lead">
+          Predict engineering college admission chances using previous year TNEA
+          cutoff data, category-wise analysis, and smart cutoff calculations.
+        </p>
+
+        <div class="mt-4">
+          <a
+            href="{% url 'calculator' %}"
+            class="btn btn-primary btn-lg px-5 py-3 me-3"
+          >
+            <i class="bi bi-calculator"></i>
+            Calculate Cutoff
+          </a>
+
+          <a
+            href="{% url 'colleges' %}"
+            class="btn btn-outline-primary btn-lg px-5 py-3"
+          >
+            <i class="bi bi-search"></i>
+            Search Colleges
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-6 text-center">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png"
+          class="img-fluid"
+          width="380"
+          alt="Student"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 bg-white">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-3 mb-4">
+        <div class="card shadow-sm border-0 p-3">
+          <h2 class="text-primary fw-bold">500+</h2>
+          <p class="mb-0">Engineering Colleges</p>
+        </div>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <div class="card shadow-sm border-0 p-3">
+          <h2 class="text-success fw-bold">20+</h2>
+          <p class="mb-0">Popular Branches</p>
+        </div>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <div class="card shadow-sm border-0 p-3">
+          <h2 class="text-warning fw-bold">7</h2>
+          <p class="mb-0">Reservation Categories</p>
+        </div>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <div class="card shadow-sm border-0 p-3">
+          <h2 class="text-danger fw-bold">Instant</h2>
+          <p class="mb-0">Prediction Results</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">Why Choose CutoffIQ?</h2>
+
+      <p class="text-muted">
+        Everything you need to plan your engineering admission.
+      </p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="card h-100 shadow-sm text-center p-4">
+          <h1>📊</h1>
+
+          <h4>Cutoff Calculator</h4>
+
+          <p>Calculate your official TNEA cutoff instantly.</p>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card h-100 shadow-sm text-center p-4">
+          <h1>🏫</h1>
+
+          <h4>College Search</h4>
+
+          <p>Search colleges based on district, branch and category.</p>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card h-100 shadow-sm text-center p-4">
+          <h1>🎯</h1>
+
+          <h4>Prediction</h4>
+
+          <p>Predict admission chances using previous year data.</p>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card h-100 shadow-sm text-center p-4">
+          <h1>📈</h1>
+
+          <h4>Analytics</h4>
+
+          <p>Compare cutoff trends across multiple years.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 bg-white">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">How It Works</h2>
+      <p class="text-muted">
+        Get your college prediction in three simple steps.
+      </p>
+    </div>
+
+    <div class="row text-center">
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm p-4">
+          <h1 class="text-primary">1</h1>
+
+          <h4>Enter Marks</h4>
+
+          <p>Enter your Mathematics, Physics and Chemistry marks.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm p-4">
+          <h1 class="text-success">2</h1>
+
+          <h4>Select Category</h4>
+
+          <p>Choose your reservation category and preferred branch.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm p-4">
+          <h1 class="text-danger">3</h1>
+
+          <h4>View Prediction</h4>
+
+          <p>Instantly view cutoff analysis and admission chances.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

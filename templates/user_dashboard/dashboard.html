@@ -1,0 +1,71 @@
+{% extends "base.html" %} {% block title %}Dashboard{% endblock %} {% block content %}
+
+<div class="container py-5">
+  <div class="text-center mb-5">
+    <h1 class="fw-bold text-primary">Welcome, {{ request.user.first_name }}</h1>
+
+    <p class="lead">Your personal CutoffIQ Dashboard</p>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-md-6">
+      <div class="card shadow text-center p-4">
+        <h5>Total Calculations</h5>
+
+        <h1 class="text-primary">{{ total_calculations }}</h1>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card shadow text-center p-4">
+        <h5>Latest Cutoff</h5>
+
+        <h1 class="text-success">{{ latest_cutoff }}</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-4">
+    <a href="{% url 'download_pdf' %}" class="btn btn-success btn-lg">
+      📄 Download PDF Report
+    </a>
+  </div>
+
+  <div class="card shadow mt-5">
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0">Recent Calculations</h5>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-hover mb-0">
+        <thead>
+          <tr>
+            <th>Cutoff</th>
+            <th>Category</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for calculation in calculations %}
+
+          <tr>
+            <td>{{ calculation.cutoff }}</td>
+            <td>{{ calculation.category }}</td>
+            <td>{{ calculation.calculated_at }}</td>
+          </tr>
+
+          {% empty %}
+
+          <tr>
+            <td colspan="3" class="text-center">No calculations yet.</td>
+          </tr>
+
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
